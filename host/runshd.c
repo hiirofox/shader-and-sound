@@ -4,6 +4,11 @@
 #include <shellapi.h>
 #include <stddef.h>
 
+#ifdef EMBED_SHADER
+extern const unsigned char embeddedShader[];
+extern const DWORD embeddedShaderSize;
+#endif
+
 /* A deliberately small, CRT-free Win32/OpenGL shader viewer. */
 typedef char GLchar;
 typedef ptrdiff_t GLsizeiptr;
@@ -420,26 +425,59 @@ static void message(const wchar_t *s) {
 void WINAPI entry(void) {
     int argc = 0;
     wchar_t **argv = CommandLineToArgvW(GetCommandLineW(), &argc);
-    if (argc < 2) {
+#ifdef EMBED_SHADER
+    int embedded = argc == 1;
+    if (argc == 3 && wtoi(argv[1]) > 0 && wtoi(argv[2]) > 0)
+        embedded = 1;
+#else
+    int embedded = 0;
+#endif
+    if (!embedded && argc < 2) {
         message(L"Usage: runshd.exe shader.glsl [width height]");
         ExitProcess(2);
     }
-    if (argc >= 4) {
+#ifdef EMBED_SHADER
+    if (embedded && argc == 3) {
+        width = wtoi(argv[1]);
+        height = wtoi(argv[2]);
+    } else
+#endif
+    if (!embedded && argc >= 4) {
         width = wtoi(argv[2]);
         height = wtoi(argv[3]);
+    }
+    if ((embedded && argc == 3) || (!embedded && argc >= 4)) {
         if (width < 1 || height < 1 || width > 16384 || height > 16384) {
             message(L"Invalid window size.");
             ExitProcess(2);
         }
     }
     DWORD len = 0, plen = 0;
-    char *raw = readfile(argv[1], &len);
+    char *raw;
+#ifdef EMBED_SHADER
+    if (embedded) {
+        raw = (char *)embeddedShader;
+        len = embeddedShaderSize;
+    } else
+#endif
+    {
+        raw = readfile(argv[1], &len);
+    }
     if (!raw) {
         message(L"Cannot read shader file.");
         ExitProcess(2);
     }
     char *frag = prepare(raw, len, &plen);
+#ifndef EMBED_SHADER
     HeapFree(GetProcessHeap(), 0, raw);
+#else
+    if (!embedded)
+        HeapFree(GetProcessHeap(), 0, raw);
+#endif
+    if (!frag) {
+        message(L"Not enough memory to prepare shader.");
+        ExitProcess(2);
+    }
     WNDCLASSW c = {0};
     c.style = CS_OWNDC;
     c.lpfnWndProc = wndproc;

@@ -107,35 +107,54 @@ void scene1()
     gcol=vec4(1.,1.,.5,1.);
     addcrystal(vec3(0.,-.8,-.3),vec3(.1,1.,-.4),1.2,.15,.9);
 }
+float crystalRand(float x)
+{
+    x = fract(x * 0.1031);
+    x *= x + 33.33;
+    x *= x + x;
+    return fract(x);
+}
 void scene2()
 {
-    //scene start
-    gcol=vec4(.66,.90,1.,1.);
-    addcrystal(vec3( 0.00,-.90, 0.00),vec3( .02,1.00, .01),0.18,.24,1.85);
-    addcrystal(vec3(-0.13,-.89,-0.05),vec3(-.16,1.00,-.08),0.82,.20,1.45);
-    addcrystal(vec3( 0.14,-.89,-0.06),vec3( .18,1.00,-.10),1.36,.19,1.36);
-    addcrystal(vec3( 0.05,-.89, 0.13),vec3( .08,1.00, .18),0.56,.18,1.22);
-    gcol=vec4(.42,.74,.98,1.);
-    addcrystal(vec3(-0.16,-.88, 0.11),vec3(-.24,1.00, .18),1.14,.17,1.10);
-    addcrystal(vec3( 0.17,-.88, 0.10),vec3( .28,1.00, .16),0.34,.16,1.04);
-    addcrystal(vec3(-0.04,-.88,-0.17),vec3(-.05,1.00,-.28),2.08,.16,1.12);
-    addcrystal(vec3( 0.09,-.88,-0.18),vec3( .14,1.00,-.30),0.94,.15,1.00);
-    gcol=vec4(.24,.50,.84,1.);
-    addcrystal(vec3(-0.25,-.87,-0.10),vec3(-.36,1.00,-.14),0.70,.15,.92);
-    addcrystal(vec3( 0.25,-.87,-0.09),vec3( .38,1.00,-.12),1.62,.14,.88);
-    addcrystal(vec3(-0.22,-.87, 0.19),vec3(-.34,1.00, .28),1.84,.14,.84);
-    addcrystal(vec3( 0.23,-.87, 0.18),vec3( .36,1.00, .26),2.42,.14,.82);
-    gcol=vec4(.74,.68,1.,1.);
-    addcrystal(vec3(-0.29,-.86, 0.03),vec3(-.48,1.00, .04),0.28,.13,.70);
-    addcrystal(vec3( 0.30,-.86, 0.04),vec3( .50,1.00, .06),1.22,.13,.72);
-    addcrystal(vec3(-0.12,-.86, 0.27),vec3(-.18,1.00, .42),2.22,.12,.68);
-    addcrystal(vec3( 0.13,-.86, 0.27),vec3( .20,1.00, .44),0.78,.12,.66);
-    gcol=vec4(.36,.82,.90,1.);
-    addcrystal(vec3(-0.31,-.85,-0.18),vec3(-.52,1.00,-.30),1.04,.11,.58);
-    addcrystal(vec3( 0.31,-.85,-0.17),vec3( .54,1.00,-.28),2.00,.11,.60);
-    addcrystal(vec3(-0.02,-.85,-0.29),vec3( .00,1.00,-.50),2.62,.11,.56);
-    addcrystal(vec3( 0.00,-.85, 0.31),vec3( .02,1.00, .52),0.48,.11,.58);
-    //scene end
+    const float TAU = 6.2831853;
+    const int COUNT = 72;
+    for (int i = 0; i < COUNT; ++i)
+    {
+        float fi = float(i);
+        float seed = fi + 19.37;
+        float rAngle = crystalRand(seed + 1.0);
+        float rRadius = crystalRand(seed + 2.0);
+        float rSize = crystalRand(seed + 3.0);
+        float rCross = crystalRand(seed + 5.0);
+        float rLean = crystalRand(seed + 6.0);
+        float rRotation = crystalRand(seed + 7.0);
+        float rTint = crystalRand(seed + 8.0);
+        float angle = TAU * (fi + 0.5) * 0.618034
+                    + (rAngle - 0.5) * 0.75;
+        float radius = (0.12 + 0.78 * sqrt((fi + 0.5) / float(COUNT)))
+                     * (0.82 + 0.36 * rRadius);
+        // 同一组 sin/cos 同时用于位置和生长方向。
+        float ca = cos(angle);
+        float sa = sin(angle);
+        float px = ca * radius * 1.22;
+        float pz = sa * radius * 1.42;
+        // x^3 与 pow(x, 3.0) 等价，省去通用幂函数。
+        float sizeCubed = rSize * rSize * rSize;
+        float len = 0.20 + 1.35 * sizeCubed;
+        float width = 0.045 + 0.095 * sqrt(len / 1.55);
+        // 用径向和切向组合倾斜方向，省去第二组 sin/cos。
+        float tangentSign = mix(1.0, -1.0, step(0.78, rCross));
+        float lean = 0.04 + 0.34 * rLean;
+        vec3 up = vec3(
+            lean * (0.72 * ca - 0.45 * sa * tangentSign),
+            1.0,
+            lean * (0.72 * sa + 0.45 * ca * tangentSign)
+        );
+        float rotation = TAU * rRotation;
+        gcol = vec4(mix(vec3(.42,.70,.94),
+                        vec3(.76,.88,1.00), rTint), 1.0);
+        addcrystal(vec3(px, -.90, pz), up, rotation, width, len);
+    }
 }
 bool maptest(vec3 o,vec3 d,out float t,out vec3 p,out vec3 r,out vec4 c)
 {
@@ -157,7 +176,7 @@ bool maptest(vec3 o,vec3 d,out float t,out vec3 p,out vec3 r,out vec4 c)
 }
 
 const float MAP_IOR=1.52,MAP_DISPERSION=0.15,MAP_EPS=0.001;
-const int MAP_REFLECT_STEPS=2,MAP_LAYERS=4;
+const int MAP_REFLECT_STEPS=2,MAP_LAYERS=6;
 const bool MAP_USE_ALPHA_BLEND=false;
 
 vec3 mapDispChannel(vec3 p,vec3 d,vec3 N,vec3 glass,vec3 mask,float ior,vec3 L1,vec3 L2,out vec3 nextO,out vec3 nextD,out bool crossed){

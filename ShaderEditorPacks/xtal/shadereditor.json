@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "title": "xtal",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.5,
+  "preview": {
+    "x": -0.3789096176624298,
+    "y": -0.04035603255033493,
+    "z": -1.0991063117980957,
+    "dx": 0.3785876929759979,
+    "dy": -0.26633182168006897,
+    "dz": 0.8864191174507141,
+    "ux": 0.06492048501968384,
+    "uy": 0.9629878401756287,
+    "uz": 0.26161012053489685,
+    "fov": 94,
+    "speed": 1,
+    "exponent": 0,
+    "width": 1920,
+    "height": 1080,
+    "expanded": true,
+    "imageFormat": "PNG",
+    "jpegQuality": 95
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    }
+  ]
+}

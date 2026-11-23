@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "title": "sbai",
+  "entry": "main.glsl",
+  "active": "v.glsl",
+  "quality": 0.25,
+  "preview": {
+    "x": -5.743833541870117,
+    "y": 1.4682027101516724,
+    "z": -4.079380035400391,
+    "dx": -0.9917746186256409,
+    "dy": -0.09951923787593842,
+    "dz": 0.0804930105805397,
+    "ux": -0.0991932675242424,
+    "uy": 0.995035707950592,
+    "uz": 0.008048360235989094,
+    "fov": 90,
+    "speed": 1,
+    "exponent": 0,
+    "width": 1920,
+    "height": 1080,
+    "expanded": true,
+    "imageFormat": "PNG",
+    "jpegQuality": 95
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "b.glsl"
+        },
+        {
+          "index": 1,
+          "type": "BUFFER",
+          "id": "s.glsl"
+        },
+        {
+          "index": 2,
+          "type": "BUFFER",
+          "id": "v.glsl"
+        }
+      ]
+    },
+    {
+      "path": "b.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    },
+    {
+      "path": "s.glsl",
+      "kind": "BUFFER",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "b.glsl"
+        }
+      ]
+    },
+    {
+      "path": "v.glsl",
+      "kind": "BUFFER",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "b.glsl"
+        },
+        {
+          "index": 1,
+          "type": "BUFFER",
+          "id": "s.glsl"
+        }
+      ]
+    }
+  ]
+}

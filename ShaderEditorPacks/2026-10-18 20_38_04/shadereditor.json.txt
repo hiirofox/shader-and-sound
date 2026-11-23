@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "title": "2026-10-18 20:38:04",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.03125,
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "buffer.glsl"
+        }
+      ]
+    },
+    {
+      "path": "buffer.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    }
+  ]
+}

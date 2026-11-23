@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "title": "h264glitch",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.5,
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "title": "esea",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 1,
+  "preview": {
+    "x": -134.07801818847656,
+    "y": 14.517939567565918,
+    "z": -48.55731201171875,
+    "dx": 0.03965012729167938,
+    "dy": -0.37366992235183716,
+    "dz": -0.9267139434814453,
+    "ux": 0.016338376328349113,
+    "uy": 0.9275617003440857,
+    "uz": -0.37331271171569824,
+    "fov": 90,
+    "speed": 1,
+    "exponent": 1,
+    "width": 1920,
+    "height": 1080,
+    "expanded": true,
+    "imageFormat": "PNG",
+    "jpegQuality": 95
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "buffer.glsl"
+        },
+        {
+          "index": 1,
+          "type": "BUFFER",
+          "id": "seacol.glsl"
+        }
+      ]
+    },
+    {
+      "path": "buffer.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    },
+    {
+      "path": "seacol.glsl",
+      "kind": "BUFFER",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "buffer.glsl"
+        }
+      ]
+    }
+  ]
+}

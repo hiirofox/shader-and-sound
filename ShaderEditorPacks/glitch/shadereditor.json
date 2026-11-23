@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "title": "glitch",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 1,
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    }
+  ]
+}

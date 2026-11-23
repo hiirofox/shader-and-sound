@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "title": "detest2",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.5,
+  "preview": {
+    "x": 0.21777373552322388,
+    "y": 1.604175329208374,
+    "z": -0.3394762873649597,
+    "dx": -0.6696999073028564,
+    "dy": -0.4835844337940216,
+    "dz": 0.5636029243469238,
+    "ux": -0.3541913628578186,
+    "uy": 0.8750377297401428,
+    "uz": 0.3299356698989868,
+    "fov": 75,
+    "speed": 0.5,
+    "exponent": 0,
+    "width": 8000,
+    "height": 4000,
+    "expanded": true,
+    "imageFormat": "JPG",
+    "jpegQuality": 85
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    }
+  ]
+}

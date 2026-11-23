@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "title": "test2",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.5,
+  "preview": {
+    "x": -2.7501795291900635,
+    "y": 2.341606378555298,
+    "z": 8.329286575317383,
+    "dx": 0.16517992317676544,
+    "dy": -0.12861740589141846,
+    "dz": -0.9778411388397217,
+    "ux": 0.028288157656788826,
+    "uy": 0.9916703104972839,
+    "uz": -0.125657856464386,
+    "fov": 100,
+    "speed": 0.5,
+    "exponent": 1,
+    "width": 1920,
+    "height": 1080,
+    "expanded": true,
+    "imageFormat": "PNG",
+    "jpegQuality": 95
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "p1.glsl"
+        },
+        {
+          "index": 1,
+          "type": "BUFFER",
+          "id": "floor.glsl"
+        }
+      ]
+    },
+    {
+      "path": "p1.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    },
+    {
+      "path": "floor.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    }
+  ]
+}

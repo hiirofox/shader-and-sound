@@ -1,0 +1,12 @@
+#ifdef GL_ES
+precision mediump float;
+#endif
+
+uniform vec2 resolution;
+uniform vec2 mouse;
+void main() {
+    vec2 uv = gl_FragCoord.xy / resolution.xy;
+    uv -=mouse;
+    // 输出红绿渐变，供主 Shader 采样
+    gl_FragColor = vec4(uv.x, uv.y, 0.25, 1.0);
+}

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "title": "testde",
+  "entry": "frag.glsl",
+  "active": "buffer.glsl",
+  "quality": 0.0625,
+  "preview": {
+    "x": 3.399876594543457,
+    "y": 0.20776091516017914,
+    "z": 3.0755884647369385,
+    "dx": -0.5083106756210327,
+    "dy": -0.4267798662185669,
+    "dz": -0.7479833960533142,
+    "ux": -0.18761380016803741,
+    "uy": 0.9025804996490479,
+    "uz": -0.3874913454055786,
+    "fov": 108,
+    "speed": 3,
+    "exponent": 0,
+    "width": 3840,
+    "height": 2160,
+    "expanded": true,
+    "imageFormat": "JPG",
+    "jpegQuality": 90
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    },
+    {
+      "path": "frag.glsl",
+      "kind": "FRAGMENT",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "buffer.glsl"
+        },
+        {
+          "index": 1,
+          "type": "BUFFER",
+          "id": "col.glsl"
+        }
+      ]
+    },
+    {
+      "path": "buffer.glsl",
+      "kind": "BUFFER",
+      "channels": []
+    },
+    {
+      "path": "col.glsl",
+      "kind": "BUFFER",
+      "channels": [
+        {
+          "index": 0,
+          "type": "BUFFER",
+          "id": "buffer.glsl"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "title": "volumelighttest",
+  "entry": "main.glsl",
+  "active": "main.glsl",
+  "quality": 0.125,
+  "preview": {
+    "x": -0.843980073928833,
+    "y": -2.399871826171875,
+    "z": -3.794066905975342,
+    "dx": 0.36830124258995056,
+    "dy": -0.20392605662345886,
+    "dz": 0.9070658087730408,
+    "ux": 0.07671535015106201,
+    "uy": 0.978986382484436,
+    "uz": 0.18894600868225098,
+    "fov": 58,
+    "speed": 5,
+    "exponent": 0,
+    "width": 8000,
+    "height": 4000,
+    "expanded": true,
+    "imageFormat": "JPG",
+    "jpegQuality": 90
+  },
+  "files": [
+    {
+      "path": "main.glsl",
+      "kind": "FRAGMENT",
+      "channels": []
+    }
+  ]
+}
